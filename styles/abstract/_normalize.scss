@@ -449,6 +449,7 @@ button,
 html input[type="button"], // 1
 input[type="reset"],
 input[type="submit"] {
+    appearance: button;
     -webkit-appearance: button; // 2
     cursor: pointer; // 3
     @if $legacy_support_for_ie {
@@ -496,6 +497,7 @@ input {
     // 1. Addresses appearance set to searchfield in S5, Chrome
     // 2. Addresses box-sizing set to border-box in S5, Chrome (include -moz to future-proof)
     &[type="search"] {
+        appearance: button;
         -webkit-appearance: textfield; // 1
         -moz-box-sizing: content-box;
         -webkit-box-sizing: content-box; // 2
