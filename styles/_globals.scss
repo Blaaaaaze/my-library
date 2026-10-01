@@ -1,0 +1,15 @@
+@use './abstract/normalize';
+@use './abstract/variables' as vars;
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    background: vars.$background;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
