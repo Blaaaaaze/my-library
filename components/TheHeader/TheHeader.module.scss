@@ -8,8 +8,9 @@
     background-color: styles.$blue;
     padding: 5px 30px;
     margin-bottom: 30px;
+    color: styles.$background;
 
     @media (min-width: styles.$tablet) {
-        justify-content: flex-start;
+        justify-content: space-around;
     }
 }

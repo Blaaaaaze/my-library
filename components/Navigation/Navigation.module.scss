@@ -1,0 +1,25 @@
+@use '../../styles/abstract/index' as styles;
+
+.nav {
+    &__ul {
+        list-style-type: none;
+        display: flex;
+        gap: 20px;
+        padding-left: 0;
+        margin: 0;    
+    }
+    
+    &__link {
+        color: styles.$background;
+        text-decoration: none;
+        font-size: 2.5rem;
+
+        @media (min-width: styles.$desktop) {
+            font-size: 3.5rem;
+        }
+    }
+}
+
+.active {
+    color: styles.$yellow
+}
