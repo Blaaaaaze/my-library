@@ -1,5 +1,6 @@
 @use './abstract/normalize';
 @use './abstract/variables' as vars;
+@use './abstract/mixins' as mixins;
 
 * {
     box-sizing: border-box;
@@ -8,6 +9,10 @@
 html {
     font-size: 10px;
     background: vars.$background;
+}
+
+body {
+    font-size: 1.6rem;
 }
 
 h1, h2, h3, h4, h5, h6 {

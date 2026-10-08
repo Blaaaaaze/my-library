@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import '../styles/index.scss';
+import TheHeader from "@/components/TheHeader/TheHeader";
 
 export const metadata: Metadata = {
   title: "MyBooks — твоя библиотека",
@@ -9,7 +10,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ru">
-      <body>{children}</body>
+      <body>
+        <TheHeader />
+        {children}
+        </body>
     </html>
   );
 }

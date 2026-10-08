@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">MyBooks book mark</title>
+  <desc id="desc">An open book icon with a transparent background.</desc>
+  <path d="M80 120c0-24 19-43 43-43h109c54 0 98 44 98 98v250c-28-25-64-39-102-39H123c-24 0-43-19-43-43V120Z" fill="#E9A22B"/>
+  <path d="M432 120c0-24-19-43-43-43H280c-54 0-98 44-98 98v250c28-25 64-39 102-39h105c24 0 43-19 43-43V120Z" fill="#F3C36A"/>
+  <path d="M109 132h112c37 0 68 15 91 43v207c-25-18-54-27-91-27H109V132Z" fill="#FFF8EA"/>
+  <path d="M403 132H291c-37 0-68 15-91 43v207c25-18 54-27 91-27h112V132Z" fill="#FBFAF7"/>
+  <path d="M256 174v208" stroke="#C57A16" stroke-width="10" stroke-linecap="round"/>
+  <path d="M138 205h91M138 242h91M283 205h91M283 242h91" stroke="#C7CED8" stroke-width="10" stroke-linecap="round"/>
+</svg>
