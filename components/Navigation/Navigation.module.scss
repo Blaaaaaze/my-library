@@ -1,22 +1,69 @@
 @use '../../styles/abstract/index' as styles;
 
+.navigation {
+    &__burger {
+        display: block;
+        font-size: 28px;
+        cursor: pointer;
+        background: styles.$blue;
+        border: none;
+        color: styles.$background;
+
+        @media (min-width: styles.$tablet) {
+            display: none;
+            border: none;
+            background: transparent;
+        }
+    }
+}
+
 .nav {
+    display: none;
+    position: absolute;
+    top: 17%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: styles.$blue;
+
+    @media (min-width: styles.$tablet) {
+            position: static;
+            display: flex;
+        }
+
     &__ul {
         list-style-type: none;
         display: flex;
+        flex-direction: column;
+        align-items: stretch;
         gap: 20px;
         padding-left: 0;
-        margin: 0;    
+        margin: 0;  
+        
+        @media (min-width: styles.$tablet) {
+            flex-direction: row;
+        }
     }
     
     &__link {
         color: styles.$background;
         text-decoration: none;
         font-size: 2.5rem;
+        padding: 12px 0;
+        color: white;
+
+        @media (min-width: styles.$tablet) {
+            text-decoration: none;
+        }
 
         @media (min-width: styles.$desktop) {
             font-size: 3.5rem;
         }
+    }
+
+    &__list--open {
+        display: flex;
     }
 }
 
