@@ -1,0 +1,92 @@
+@use '../../styles/abstract/index' as styles;
+
+.banner {
+    width: 100%;
+    background-color: styles.$banner-background;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+
+    @media (min-width: styles.$tablet) {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__image {
+        position: relative;
+        width: 90%;
+        height: 120px;
+
+        @media (min-width: styles.$tablet) {
+            height: 220px;
+        }
+
+        @media (min-width: styles.$desktop) {
+            height: 290px;
+        }
+
+        @media (min-width: styles.$wide) {
+            height: 450px;
+        }
+    }
+
+    &__subtitle {
+        font-size: 1.2rem;
+        font-weight: 500;
+        line-height: 1.4;
+        color: styles.$banner-secondary-text;
+
+        @media (min-width: styles.$wide) {
+            font-size: 1.6rem;
+        }
+    }
+
+    &__title {
+        max-width: 320px;
+        margin-bottom: 12px;
+        font-size: clamp(28px, 3vw, 40px);
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+        color: styles.$banner-main-text;
+    }
+
+    &__text {
+        max-width: 320px;
+        margin-bottom: 20px;
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 1.6;
+        color: styles.$banner-secondary-text;
+
+        @media (min-width: styles.$wide) {
+            font-size: 1.9rem;
+        }
+    }
+
+    &__button {
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.4;
+        color: styles.$banner-button-text;
+        background-color: styles.$banner-button;
+        text-decoration: none;
+        padding: 7px 10px;
+        border-radius: 10px;
+        align-self: flex-start;
+
+        @media (min-width: styles.$wide) {
+            font-size: 1.9rem;
+        }
+    }
+}
