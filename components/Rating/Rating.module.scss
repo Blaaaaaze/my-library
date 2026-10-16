@@ -1,0 +1,13 @@
+@use '../../styles/abstract/index' as styles;
+
+.star {
+    color: styles.$stars-color;
+    font-size: 2rem;
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.active {
+    color: styles.$stars-active;
+}

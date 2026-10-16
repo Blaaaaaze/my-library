@@ -18,3 +18,35 @@ body {
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
+
+label {
+    display: flex;
+    flex-direction: column;
+}
+
+input, textarea {
+    border: 1px solid vars.$gray-secondary;
+    border-radius: 8px;
+    padding: 3px 6px;
+}
+
+.main-button {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: vars.$banner-button-text;
+    background-color: vars.$banner-button;
+    text-decoration: none;
+    padding: 7px 10px;
+    border-radius: 10px;
+
+    @media (min-width: vars.$wide) {
+        font-size: 1.9rem;
+    }
+}
+
+textarea {
+    resize: vertical;
+    height: 80px;
+}

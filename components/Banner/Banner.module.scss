@@ -74,19 +74,6 @@
     }
 
     &__button {
-        font-family: inherit;
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 1.4;
-        color: styles.$banner-button-text;
-        background-color: styles.$banner-button;
-        text-decoration: none;
-        padding: 7px 10px;
-        border-radius: 10px;
         align-self: flex-start;
-
-        @media (min-width: styles.$wide) {
-            font-size: 1.9rem;
-        }
     }
 }

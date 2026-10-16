@@ -1,0 +1,25 @@
+@use '../../../styles/abstract/index' as styles;
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+
+    @media (min-width: styles.$tablet) {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+    &__text-container, &__widgets {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        @media (min-width: styles.$tablet) {
+            flex-grow: 1;
+            gap: 10px;
+        }
+    }
+}
