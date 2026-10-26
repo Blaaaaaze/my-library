@@ -6,6 +6,7 @@ import Rating from '@/components/Rating/Rating';
 import ImageDrop from '@/components/ImageDrop/ImageDrop';
 import { SubmitEvent } from 'react';
 import { CreateBookInput } from '@/types/books';
+import { toast } from "sonner";
 
 export default function NewBook() {
     async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
@@ -25,16 +26,25 @@ export default function NewBook() {
             cover_url: String(formData.get("cover") ?? "") || null,
         };
 
-        const response = await fetch("/api/books", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(bookData),
-        });
+        try {
+            const response = await fetch("/api/books", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(bookData),
+            });
+    
+            if (!response.ok) {
+                const data = await response.json().catch(() => null);
+                toast.error(data?.error ?? "Не удалось добавить книгу");
+                return;
+            }
 
-        if (response.ok) {
+            toast.success("Book added");
             form.reset();
+        } catch {
+            toast.error('Lost connection to server')
         }
 
         
