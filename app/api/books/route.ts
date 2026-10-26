@@ -1,37 +1,44 @@
 import { NextResponse } from "next/server";
+import { z } from "zod";
 import pool from "@/lib/db/pool";
-import type { Book, CreateBookInput } from "@/types/books";
+import type { Book } from "@/types/books";
+
+const createBookSchema = z.object({
+    title: z.string().trim().min(1, "Название книги обязательно"),
+    description: z.string().trim().min(1, "Описание обязательно"),
+    rating: z.number().int().min(1, "Оценка обязательна").max(5, "Оценка должна быть от 1 до 5"),
+    pros: z.string().trim().min(1, "Укажите достоинства книги"),
+    cons: z.string().trim().min(1, "Укажите недостатки книги"),
+    cover_url: z.string().trim().nullable().optional(),
+});
 
 export async function POST(request: Request) {
     try {
-        const body: unknown = await request.json();
-
-        if (
-            typeof body !== "object" ||
-            body === null ||
-            !("title" in body) ||
-            typeof body.title !== "string" ||
-            !body.title.trim()
-        ) {
+        let body: unknown;
+        try {
+            body = await request.json();
+        } catch {
             return NextResponse.json(
-                { error: "Название книги обязательно" },
+                { error: "Некорректный JSON в запросе" },
                 { status: 400 }
             );
         }
 
-        const input = body as CreateBookInput;
-
-        if (
-            input.rating != null &&
-            (!Number.isInteger(input.rating) ||
-                input.rating < 1 ||
-                input.rating > 5)
-        ) {
+        const validation = createBookSchema.safeParse(body);
+        if (!validation.success) {
             return NextResponse.json(
-                { error: "Оценка должна быть от 1 до 5" },
-                { status: 400 }
+                {
+                    error: "Проверьте обязательные поля",
+                    details: validation.error.issues.map(({ path, message }) => ({
+                        field: path.join("."),
+                        message,
+                    })),
+                },
+                { status: 400 },
             );
         }
+
+        const input = validation.data;
 
         const result = await pool.query<Book>(
             `INSERT INTO books
@@ -40,10 +47,10 @@ export async function POST(request: Request) {
             RETURNING *`,
             [
                 input.title.trim(),
-                input.description ?? null,
-                input.rating ?? null,
-                input.pros ?? null,
-                input.cons ?? null,
+                input.description,
+                input.rating,
+                input.pros,
+                input.cons,
                 input.cover_url ?? null,
             ]
         );

@@ -22,4 +22,9 @@
             gap: 10px;
         }
     }
+
+    &__text-container label > span::after {
+        content: " *";
+        color: red;
+    }
 }

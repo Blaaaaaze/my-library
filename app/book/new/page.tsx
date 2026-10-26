@@ -5,7 +5,7 @@ import styles from './page.module.scss';
 import Rating from '@/components/Rating/Rating';
 import ImageDrop from '@/components/ImageDrop/ImageDrop';
 import { SubmitEvent } from 'react';
-import { Book, CreateBookInput } from '@/types/books';
+import { CreateBookInput } from '@/types/books';
 
 export default function NewBook() {
     async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
@@ -46,23 +46,23 @@ export default function NewBook() {
         <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles['form__text-container']}>
                 <label>
-                    Title
-                    <input type="text" name='title' />
+                    <span>Title</span>
+                    <input type="text" name='title' required/>
                 </label>
 
                 <label>
-                    Description
-                    <textarea name='description' />
+                    <span>Description</span>
+                    <textarea name='description' required/>
                 </label>
 
                 <label>
-                    Pros
-                    <textarea name='pros' id="pros" />
+                    <span>Pros</span>
+                    <textarea name='pros' id="pros" required/>
                 </label>
 
                 <label>
-                    Cons
-                    <textarea name='cons' id="cons" />
+                    <span>Cons</span>
+                    <textarea name='cons' id="cons" required/>
                 </label>
             </div>
 

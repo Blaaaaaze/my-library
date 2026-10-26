@@ -11,9 +11,9 @@ export default function Rating() {
 
     return (
     <fieldset>
-      <legend>Rating</legend>
+      <legend>Rating <span className={styles.red}>*</span></legend>
 
-      <input type="hidden" name="rating" value={rating} />
+      <input type="hidden" name="rating" value={rating} required/>
 
       {[1, 2, 3, 4, 5].map((value) => (
         <button
