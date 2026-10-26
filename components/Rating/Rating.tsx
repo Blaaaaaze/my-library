@@ -28,7 +28,7 @@ export default function Rating() {
         </button>
       ))}
 
-      <span>{rating ? `${rating} / 5` : "No Rating"}</span>
+      <span className={styles.value}>{rating ? `${rating} / 5` : "No Rating"}</span>
     </fieldset>
   );
 }

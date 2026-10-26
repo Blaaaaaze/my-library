@@ -1,5 +1,6 @@
 @use '../../styles/abstract/index' as styles;
 
+
 .star {
     color: styles.$stars-color;
     font-size: 2rem;
@@ -14,4 +15,10 @@
 
 .red {
     color: red;
+}
+
+.value {
+    display: inline-block;
+    min-width: 7rem;
+    margin-left: 0.5rem;
 }
