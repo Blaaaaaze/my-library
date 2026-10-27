@@ -8,7 +8,7 @@ export default function Banner() {
             <p className={styles.banner__subtitle}>Welcome!</p>
             <h2 className={styles.banner__title}>Books that inspire</h2>
             <p className={styles.banner__text}>Open new stories, make a grand books collection, check your progress and find your adventures</p>
-            <Link href='/' className={`${styles.banner__button} main-button`}>Catalog</Link>
+            <Link href='/collection' className={`${styles.banner__button} main-button`}>Collection</Link>
         </div>
         <div className={styles.banner__image}>
             <Image

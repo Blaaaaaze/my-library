@@ -26,12 +26,12 @@ export default function Navigation() {
                 <ul className={styles.nav__ul}>
                     <li>
                         <Link 
-                        href='/catalog' 
+                        href='/book/new' 
                         onClick={onClick}
                         className={`
                         ${styles.nav__link} 
-                        ${pathname.startsWith('/catalog') ? styles.active : ''}`}>
-                            Catalog
+                        ${pathname.startsWith('/book/new') ? styles.active : ''}`}>
+                            Add book
                         </Link>
                     </li>
                     <li>
