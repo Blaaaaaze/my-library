@@ -23,7 +23,7 @@ export default function NewBook() {
             rating: rawRating ? Number(rawRating) : null,
             pros: String(formData.get("pros") ?? ""),
             cons: String(formData.get("cons") ?? ""),
-            cover_url: String(formData.get("cover") ?? "") || null,
+            cover_url: null,
         };
 
         try {
