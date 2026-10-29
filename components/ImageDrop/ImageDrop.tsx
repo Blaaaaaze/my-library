@@ -54,7 +54,7 @@ export default function ImageDrop() {
 
         {previewUrl ? (
           <>
-            <span className={styles.fileName}>{fileName}</span>
+            {/* eslint-disable-next-line @next/next/no-img-element -- local object URLs are temporary previews */}
             <span className={styles.success}>✓ Image selected</span>
           </>
         ) : (
