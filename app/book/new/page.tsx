@@ -8,6 +8,18 @@ import { SubmitEvent } from 'react';
 import { CreateBookInput } from '@/types/books';
 import { toast } from "sonner";
 
+function fileToDataUrl(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            if (typeof reader.result === "string") resolve(reader.result);
+            else reject(new Error("Не удалось прочитать изображение"));
+        };
+        reader.onerror = () => reject(new Error("Не удалось прочитать изображение"));
+        reader.readAsDataURL(file);
+    });
+}
+
 export default function NewBook() {
     async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -16,6 +28,17 @@ export default function NewBook() {
         const formData = new FormData(form);
 
         const rawRating = formData.get("rating");
+        const coverFile = formData.get("cover");
+
+        let coverUrl: string | null = null;
+        if (coverFile instanceof File && coverFile.size > 0) {
+            try {
+                coverUrl = await fileToDataUrl(coverFile);
+            } catch {
+                toast.error("Не удалось прочитать изображение");
+                return;
+            }
+        }
         
         const bookData: CreateBookInput = {
             title: String(formData.get("title") ?? "").trim(),
@@ -23,7 +46,7 @@ export default function NewBook() {
             rating: rawRating ? Number(rawRating) : null,
             pros: String(formData.get("pros") ?? ""),
             cons: String(formData.get("cons") ?? ""),
-            cover_url: null,
+            cover_url: coverUrl,
         };
 
         try {
