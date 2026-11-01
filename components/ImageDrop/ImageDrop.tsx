@@ -8,7 +8,6 @@ const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
 export default function ImageDrop() {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [fileName, setFileName] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -35,7 +34,6 @@ export default function ImageDrop() {
     }
 
     setError(null);
-    setFileName(file.name);
     setPreviewUrl(URL.createObjectURL(file));
   }
 
