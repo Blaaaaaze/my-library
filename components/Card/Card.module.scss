@@ -1,10 +1,19 @@
 @use "@/styles/abstract/variables" as vars;
 
 .card {
+    display: block;
     overflow: hidden;
     border: 1px solid vars.$border-soft;
     border-radius: 18px;
     background: vars.$surface-card;
+    color: inherit;
+    text-decoration: none;
+
+    &,
+    &:hover,
+    &:focus-visible {
+        text-decoration: none;
+    }
     transition: transform 180ms ease, box-shadow 180ms ease;
 
     &:hover { transform: translateY(-4px); box-shadow: 0 16px 36px vars.$cover-shadow; }
@@ -16,5 +25,4 @@
     &__rating { flex-shrink: 0; color: vars.$accent-earth; font-size: 13px; font-weight: 700; }
     &__author { margin: 6px 0 12px; color: vars.$text-subtle; font-size: 13px; }
     &__description { min-height: 60px; margin: 0 0 18px; color: vars.$text-muted; font-size: 14px; line-height: 1.55; }
-    &__link { display: inline-flex; gap: 8px; align-items: center; color: vars.$accent-earth-link; font-size: 13px; font-weight: 700; text-decoration: none; &:hover { color: vars.$accent-earth-hover; } }
 }

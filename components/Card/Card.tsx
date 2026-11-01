@@ -1,4 +1,5 @@
 import styles from './Card.module.scss';
+import Link from 'next/link';
 
 export type BookCardData = {
     id: string;
@@ -10,7 +11,8 @@ export type BookCardData = {
 
 export default function Card({ book }: { book: BookCardData }) {
     return (
-        <article className={styles.card}>
+        <Link className={styles.card} href={`/book/${book.id}`} aria-label={`Открыть книгу «${book.title}»`}>
+          <article>
             <div className={styles.card__cover}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img className={styles.card__image} src={book.coverUrl || "/book-cover-placeholder.svg"} alt={`Обложка книги «${book.title}»`} />
@@ -21,8 +23,8 @@ export default function Card({ book }: { book: BookCardData }) {
                     {book.rating !== null && <span className={styles.card__rating} aria-label={`Оценка ${book.rating} из 5`}>★ {book.rating.toFixed(1)}</span>}
                 </div>
                 {book.description && <p className={styles.card__description}>{book.description}</p>}
-                <a className={styles.card__link} href={`/book/${book.id}`}>Подробнее <span aria-hidden="true">↗</span></a>
             </div>
-        </article>
+          </article>
+        </Link>
     );
 }
