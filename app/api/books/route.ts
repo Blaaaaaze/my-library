@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import pool from "@/lib/db/pool";
-import type { Book } from "@/types/books";
+import { createBook } from "@/repositories/books";
 
 const createBookSchema = z.object({
     title: z.string().trim().min(1, "Название книги обязательно"),
@@ -40,22 +39,9 @@ export async function POST(request: Request) {
 
         const input = validation.data;
 
-        const result = await pool.query<Book>(
-            `INSERT INTO books
-                (title, description, rating, pros, cons, cover_url)
-            VALUES ($1, $2, $3, $4, $5, $6)
-            RETURNING *`,
-            [
-                input.title.trim(),
-                input.description,
-                input.rating,
-                input.pros,
-                input.cons,
-                input.cover_url ?? null,
-            ]
-        );
+        const book = await createBook(input);
 
-        return NextResponse.json(result.rows[0], { status: 201 });
+        return NextResponse.json(book, { status: 201 });
     } catch (error) {
         console.error("Failed to create book:", error);
 
