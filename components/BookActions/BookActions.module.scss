@@ -1,0 +1,97 @@
+@use "@/styles/abstract/variables" as vars;
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.editButton,
+.deleteButton,
+.cancelButton {
+    min-height: 40px;
+    padding: 9px 14px;
+    border: 1px solid vars.$accent-earth-border;
+    border-radius: 10px;
+    font: 600 13px/1.2 Arial, sans-serif;
+    cursor: pointer;
+    transition: background 150ms ease, border-color 150ms ease;
+
+    &:disabled { cursor: wait; opacity: .65; }
+}
+
+.editButton {
+    background: vars.$accent-earth;
+    border-color: vars.$accent-earth;
+    color: vars.$white;
+
+    &:hover:not(:disabled) { background: vars.$accent-earth-hover; }
+}
+
+.deleteButton {
+    background: vars.$surface-card;
+    color: #a33f35;
+
+    &:hover:not(:disabled) { background: #fff2ef; border-color: #e9c6c0; }
+}
+
+.cancelButton {
+    background: vars.$surface-card;
+    color: vars.$text-muted;
+
+    &:hover:not(:disabled) { background: #f4f0e9; }
+}
+
+.form {
+    display: grid;
+    width: 100%;
+    gap: 12px;
+    margin-top: 4px;
+    padding: 16px;
+    border: 1px solid vars.$border-soft;
+    border-radius: 14px;
+    background: vars.$surface-card;
+}
+
+.field {
+    display: grid;
+    gap: 6px;
+    color: vars.$text-muted;
+    font-size: 12px;
+    font-weight: 600;
+
+    input,
+    textarea,
+    select {
+        width: 100%;
+        padding: 9px 10px;
+        border: 1px solid vars.$border-soft;
+        border-radius: 8px;
+        background: #fff;
+        color: vars.$ink;
+        font: 14px/1.45 Arial, sans-serif;
+    }
+
+    textarea { resize: vertical; }
+}
+
+.imageHint {
+    color: vars.$text-subtle;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.45;
+}
+
+.preview {
+    display: block;
+    width: min(100%, 150px);
+    aspect-ratio: 3 / 4;
+    border: 1px solid vars.$border-soft;
+    border-radius: 9px;
+    object-fit: cover;
+}
+
+.error { margin: 0; color: #a33f35; font-size: 12px; }
+
+.formActions { display: flex; flex-wrap: wrap; gap: 9px; }

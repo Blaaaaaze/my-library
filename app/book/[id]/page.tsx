@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Container from "@/components/Container/Container";
+import BookActions from "@/components/BookActions/BookActions";
 import getBook from "@/hooks/useBook";
 import styles from "./page.module.scss";
 
@@ -68,6 +69,7 @@ export default async function BookPage({ params }: Props) {
             <p className={styles.date}>
               Добавлена {new Intl.DateTimeFormat("ru", { dateStyle: "long" }).format(new Date(book.created_at))}
             </p>
+            <BookActions book={book} />
           </div>
         </article>
       </main>
