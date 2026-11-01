@@ -1,0 +1,104 @@
+@use "@/styles/abstract/variables" as vars;
+
+.home {
+    max-width: 1180px;
+    margin: 30px auto 76px;
+    padding: 0 8px;
+
+    @media (max-width: vars.$mobile) {
+        margin-top: 18px;
+        margin-bottom: 48px;
+    }
+}
+
+.recent { margin-top: 48px; }
+
+.sectionHeading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 22px;
+
+    @media (max-width: vars.$mobile) {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: vars.$accent-earth-muted;
+    font: 700 10px/1.4 Arial, sans-serif;
+    letter-spacing: .16em;
+}
+
+.title {
+    margin: 0;
+    color: vars.$ink;
+    font: 600 clamp(27px, 4vw, 38px)/1.12 Georgia, serif;
+    letter-spacing: -.03em;
+}
+
+.allBooks {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 9px;
+    padding-bottom: 5px;
+    color: vars.$accent-earth-link;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+
+    &:hover { color: vars.$accent-earth-hover; }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+
+    @media (min-width: vars.$tablet) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+    }
+}
+
+.empty {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    border: 1px solid vars.$border-soft;
+    border-radius: 16px;
+    background: vars.$surface-card;
+
+    @media (max-width: vars.$mobile) {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+        padding: 20px;
+    }
+}
+
+.emptyIcon {
+    display: grid;
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    place-items: center;
+    border-radius: 50%;
+    background: #f3eee5;
+    color: vars.$accent-earth;
+    font-size: 22px;
+}
+
+.emptyTitle { margin: 0; color: vars.$ink; font: 600 19px/1.3 Georgia, serif; }
+.emptyText { margin: 5px 0 0; color: vars.$text-muted; font-size: 13px; line-height: 1.5; }
+.addButton { flex-shrink: 0; margin-left: auto; text-decoration: none; }
+
+@media (max-width: vars.$mobile) {
+    .addButton { margin-left: 0; }
+}
